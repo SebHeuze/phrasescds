@@ -1,0 +1,96 @@
+body {
+    background-color: #C5E4FF;
+}
+
+.phrase {
+	font-family: 'Handlee', cursive;
+	font-size:25px;
+}
+
+.chouquette div.phrase::before {
+	font-family:none;
+	color: #ccc;
+	content: open-quote;
+	font-size: 4em;
+	line-height: 0.1em;
+	margin-right: 0.25em;
+	vertical-align: -0.4em;
+}
+
+.chouquette div.phrase::after {
+	font-family:none;
+	color: #ccc;
+	content: close-quote;
+	font-size: 4em;
+	line-height: 0.1em;
+	margin-left: 0.25em;
+	vertical-align: -0.55em;
+}
+
+.auteur {
+	font-family: 'Catamaran', sans-serif;
+	display:inline;
+}
+
+.auteur .icon {
+	display:inline-block;
+	font-weight: bold;
+	height: 30px;
+	width: 30px;
+    border-radius:  50%;
+    text-align: center;
+    line-height: 31px;
+    font-size: 1em;
+    margin-right: 10px;
+    color:white;
+}
+
+.date {
+	display:inline;
+	font-family: 'Catamaran', sans-serif;
+}
+
+.chouquette {
+	background-color: #FFF;
+	margin:1em;
+	padding:1em;
+}
+
+.chouquette:hover{
+	background-color: #F8F8F8;
+}
+
+.chouquette:hover div.phrase::before {
+	color: #444;
+}
+
+.chouquette:hover div.phrase::after{
+	color: #444;
+}
+
+
+.multichouquette {
+	background-color: #FFF;
+	margin:1em;
+	padding:1em;
+}
+
+.multichouquette:hover{
+	background-color: #F8F8F8;
+}
+
+.multichouquette:hover div.phrase::before {
+	color: #444;
+}
+
+.multichouquette:hover div.phrase::after{
+	color: #444;
+}
+
+.multichouquette .phrase{
+	font-size:20px;
+}
+
+.multichouquette .dialogue{
+	line-height:40px;
+}

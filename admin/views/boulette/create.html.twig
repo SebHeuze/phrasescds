@@ -1,0 +1,63 @@
+{% extends 'base/backend.html.twig' %}
+
+{% block container %}
+
+    <div class="wrapper row-offcanvas row-offcanvas-left">
+
+        {% include 'menu.html.twig' with {'option': 'boulette_create'} %}
+
+        <!-- Right side column. Contains the navbar and content of the page -->
+        <aside class="right-side">                
+            <!-- Content Header (Page header) -->
+            <section class="content-header">
+                <h1>
+                    Ajouter une Boulette
+                </h1>
+            </section>
+
+            <!-- Main content -->
+            <section class="content">
+
+                {% include 'alerts.html.twig' %}
+
+                <div class="row">
+                    <div class="col-md-6">
+                                <form name="form" method="post" action="">
+                        
+
+                                    <div class="box box-info">
+                                        <div class="box-header">
+                                            <h3 class="box-title"></h3>
+                                        </div><!-- /.box-header -->
+
+                                            {% for i in 0..nb_phrases %}
+                                            <div class='form-group'>
+                                                <select id="id_collaborateur{{ loop.index }}" name="id_collaborateur{{ loop.index }}" class="form-control" style="display:inline; width:30%">
+                                                    {% if loop.index!=1 %}<option value=""></option>{% endif %}
+                                                    {% for collab in collaborateurs %}
+                                                        <option value="{{collab.id_collaborateur}}">{{collab.prenom}} {{collab.nom}}</option>
+                                                    {% endfor %}
+                                                </select>
+                                                <input type="text" id="phrase{{ loop.index }}" name="phrase{{ loop.index }}" "{% if loop.index==1 %}required=required{% endif %}" class="form-control" style="display:inline; width:69.5%" />
+                                            </div>
+                                            {% endfor %}
+                                         
+                                    </div><!-- /.box-body -->
+
+
+                                <div class="box-footer">
+                                    <button type="submit" class="btn btn-primary">Creer</button>
+                                </div>
+                                 </form>   
+
+                            </div><!-- /.box -->
+
+
+                    </div>
+                </div>
+
+            </section><!-- /.content -->
+        </aside><!-- /.right-side -->
+    </div><!-- ./wrapper -->
+
+{% endblock %}

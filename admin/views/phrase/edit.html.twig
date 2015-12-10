@@ -1,0 +1,66 @@
+{% extends 'ag_base/backend.html.twig' %}
+
+{% block container %}
+
+    <div class="wrapper row-offcanvas row-offcanvas-left">
+
+        {% include 'menu.html.twig' with {'option': 'phrase_edit'} %}
+
+        <!-- Right side column. Contains the navbar and content of the page -->
+        <aside class="right-side">                
+            <!-- Content Header (Page header) -->
+            <section class="content-header">
+                <h1>
+                    Edit Phrase {{ id }}
+                </h1>
+            </section>
+
+            <!-- Main content -->
+            <section class="content">
+
+                {% include 'ag_alerts.html.twig' %}
+
+                <div class="row">
+                    <div class="col-md-6">
+
+                        {{ form_start(form, {'method': 'POST'}) }}
+                            {{ form_errors(form) }}
+
+                            <div class="box box-info">
+                                <div class="box-header">
+                                    <h3 class="box-title"></h3>
+                                </div><!-- /.box-header -->
+                                <div class="box-body">
+
+									<div class='form-group'>
+									    {{ form_label(form.id_collaborateur) }}
+									    {{ form_widget(form.id_collaborateur, { attr: { 'class': 'form-control' }}) }}
+									</div>
+
+									<div class='form-group'>
+									    {{ form_label(form.message) }}
+									    {{ form_widget(form.message, { attr: { 'class': 'form-control' }}) }}
+									</div>
+
+                                                 
+
+                                </div><!-- /.box-body -->
+
+                                {{ form_rest(form) }}
+
+                                <div class="box-footer">
+                                    <button type="submit" class="btn btn-primary">Edit</button>
+                                </div>
+
+                            </div><!-- /.box -->
+                        {{ form_end(form) }}
+
+
+                    </div>
+                </div>
+
+            </section><!-- /.content -->
+        </aside><!-- /.right-side -->
+    </div><!-- ./wrapper -->
+
+{% endblock %}

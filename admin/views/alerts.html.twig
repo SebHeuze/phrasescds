@@ -1,0 +1,7 @@
+{% if alertes is defined %}
+        <div class="alert alert-{{ alertes.type }} alert-dismissable">
+            <i class="fa fa-check"></i>
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+            <b>{{ alertes.message }}</b>
+        </div>
+{% endif %}
