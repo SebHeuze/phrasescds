@@ -27,14 +27,9 @@ if(isset($_POST['phrase1'])){
 
     for ($i =1; $i <=MAX_PHRASES_DIALOGUE; $i++){
         if(trim($_POST['phrase'.$i])!="" && $_POST['id_collaborateur'.$i]>0){
-        	$update_query = "INSERT INTO `phrase` (`id_collaborateur`,`message`) VALUES (?, ?)";          
+        	$update_query = "INSERT INTO `phrase` (`id_collaborateur`,`id_boulette`,`message`) VALUES (?, ?, ?)";
    			$qry = $file_db->prepare($update_query);
-			$qry->execute(array($_POST['id_collaborateur'.$i],$_POST['phrase'.$i]));
-			$id_phrase = $file_db->lastInsertId();
-
-			$update_query = "INSERT INTO `boulette_phrase` (`id_boulette`,`id_phrase`) VALUES (?, ?)";          
-   			$qry = $file_db->prepare($update_query);
-			$qry->execute(array($id_boulette,$id_phrase));
+			$qry->execute(array($_POST['id_collaborateur'.$i],$id_boulette,$_POST['phrase'.$i]));
         }
     }
     

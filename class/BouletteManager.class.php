@@ -11,8 +11,8 @@ class BouletteManager {
     public static function getBoulettes(){
         global $file_db;
 
-        $result = $file_db->query('SELECT * FROM boulette b, boulette_phrase bp, phrase p, collaborateur c'
-           . ' WHERE b.id_boulette=bp.id_boulette AND bp.id_phrase=p.id_phrase AND p.id_collaborateur = c.id_collaborateur ORDER BY b.timestamp DESC');
+        $result = $file_db->query('SELECT * FROM boulette b, phrase p, collaborateur c'
+           . ' WHERE b.id_boulette=p.id_boulette AND p.id_collaborateur = c.id_collaborateur ORDER BY b.timestamp DESC');
      
         $boulette = new Boulette;
         foreach($result as $row) {

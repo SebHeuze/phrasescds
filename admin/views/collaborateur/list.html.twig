@@ -9,6 +9,7 @@
         $(function() {
             $("#boulette_list").dataTable({
                 serverSide: true,
+                order: [[ 2, "asc" ]],
                 ajax: '?page=collaborateur&action=json',
                 columns: [
                     {% for table_column in table_columns %}

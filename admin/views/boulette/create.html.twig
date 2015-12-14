@@ -30,7 +30,7 @@
                                             <h3 class="box-title"></h3>
                                         </div><!-- /.box-header -->
 
-                                            {% for i in 0..nb_phrases %}
+                                            {% for i in 1..nb_phrases %}
                                             <div class='form-group'>
                                                 <select id="id_collaborateur{{ loop.index }}" name="id_collaborateur{{ loop.index }}" class="form-control" style="display:inline; width:30%">
                                                     {% if loop.index!=1 %}<option value=""></option>{% endif %}

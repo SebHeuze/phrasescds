@@ -1,0 +1,16 @@
+====Version 1.0.0====
+- Version initiale
+
+
+====Version 1.0.1====
+- Passage OneToMany (+Script SQL)
+
+====TODO====
+- Suppression des phrases quand on supprime une boulette (+ nettoyage)
+- Catégorisation
+- Export Excel automatique (avec catégories)
+- Pagination première page (ou infinite scroll)
+- Archivage
+- Votes
+- Comptes ?
+- Commentaires ?

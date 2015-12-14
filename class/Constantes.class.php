@@ -21,7 +21,7 @@ class Constantes
 
 	public static function config()
 	{
-		define('MAX_PHRASES_DIALOGUE', 4);
+		define('MAX_PHRASES_DIALOGUE', 5);
 	}
         
         

@@ -1,4 +1,4 @@
-# phrasescds
+# phrasescds 1.0.1
 Site pour les boulettes chouquettes du CDS
 
 # Requis
