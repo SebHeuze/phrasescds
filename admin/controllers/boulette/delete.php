@@ -12,6 +12,9 @@ if(isset($_GET['id'])){
         $rowTotal = $file_db->prepare("DELETE FROM `boulette` WHERE `id_boulette` = ?");
         $rowTotal->execute(array($_GET['id']));
 
+        $rowTotal = $file_db->prepare("DELETE FROM `phrase` WHERE `id_boulette` = ?");
+        $rowTotal->execute(array($_GET['id']));
+
         $_SESSION['message'] = array("type"=>"success", "message" => "Boulette supprimée");
 
         header('Location: ?page=boulette&action=list'); 

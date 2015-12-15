@@ -4,9 +4,12 @@
 
 ====Version 1.0.1====
 - Passage OneToMany (+Script SQL)
+- Suppression des phrases quand on supprime une boulette (+ nettoyage)
+- Ajout bouton menu pour Mobile
+- Check avant suppression collaborateur
 
 ====TODO====
-- Suppression des phrases quand on supprime une boulette (+ nettoyage)
+
 - Catégorisation
 - Export Excel automatique (avec catégories)
 - Pagination première page (ou infinite scroll)

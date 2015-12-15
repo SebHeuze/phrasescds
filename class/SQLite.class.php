@@ -36,19 +36,14 @@ class SQLite
 			// Table des boulettes
 		$file_db->exec("CREATE TABLE IF NOT EXISTS boulette (
 		                id_boulette INTEGER PRIMARY KEY AUTOINCREMENT, 
-		                timestamp  DATETIME DEFAULT CURRENT_TIMESTAMP)");
+		                timestamp  DATETIME DEFAULT (strftime('%s', 'now')))");
 
 		// Table des phrases
 		$file_db->exec("CREATE TABLE IF NOT EXISTS phrase (
 		                id_phrase INTEGER PRIMARY KEY AUTOINCREMENT, 
 		                id_collaborateur INTEGER, 
+		                id_boulette INTEGER,
 		                message TEXT)");
-
-		// Table ONE TO MANY Boulette-Phrases
-		$file_db->exec("CREATE TABLE IF NOT EXISTS boulette_phrase (
-		                id_phrase INTEGER, 
-		                id_boulette INTEGER)");
-
 
 		// Table des collaborateurs
 		$file_db->exec("CREATE TABLE IF NOT EXISTS collaborateur (
@@ -126,11 +121,9 @@ class SQLite
 
 		$insert_b = "INSERT INTO boulette DEFAULT VALUES";
 
-		$insert_p = "INSERT INTO phrase (id_collaborateur, message) 
-		            VALUES (:id_collaborateur, :message)";  
+		$insert_p = "INSERT INTO phrase (id_collaborateur, message, id_boulette) 
+		            VALUES (:id_collaborateur, :message, :id_boulette)";  
 
-		$insert_bp = "INSERT INTO boulette_phrase (id_boulette, id_phrase) 
-		            VALUES (:id_boulette, :id_phrase)";      
 
 		$stmt_b = $file_db->prepare($insert_b);
 
@@ -138,11 +131,8 @@ class SQLite
 
 		$stmt_p->bindParam(':id_collaborateur', $id_collaborateur);
 		$stmt_p->bindParam(':message', $message);
+		$stmt_p->bindParam(':id_boulette', $id_boulette);
 
-		$stmt_bp = $file_db->prepare($insert_bp);
-
-		$stmt_bp->bindParam(':id_boulette', $id_boulette);
-		$stmt_bp->bindParam(':id_phrase', $id_phrase);
 
 		//On insère tout
 		foreach ($boulettes as $b) {
@@ -155,9 +145,6 @@ class SQLite
 		     	 // Execute statement
 		     	$stmt_p->execute();
 		     	$id_phrase = $file_db->lastInsertId();
-
-		     	 // Execute statement
-		     	$stmt_bp->execute();
 		 	}
 		}
 
