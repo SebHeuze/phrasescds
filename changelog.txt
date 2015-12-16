@@ -7,9 +7,9 @@
 - Suppression des phrases quand on supprime une boulette (+ nettoyage)
 - Ajout bouton menu pour Mobile
 - Check avant suppression collaborateur
+- Edition de boulette
 
 ====TODO====
-
 - Catégorisation
 - Export Excel automatique (avec catégories)
 - Pagination première page (ou infinite scroll)
@@ -17,4 +17,3 @@
 - Votes
 - Comptes ?
 - Commentaires ?
-- Edition de boulette

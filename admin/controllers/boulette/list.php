@@ -1,9 +1,9 @@
 <?php
 
 $table_columns = array(
-	'id_boulette', 
+	'id_boulette',
+	'phrases',
 	'timestamp', 
-
 );
 
 $primary_key = "id_boulette";	

@@ -26,39 +26,50 @@
     
     $table_columns = array(
         'id_boulette', 
+        'phrases', 
         'timestamp', 
-
     );
     
     $table_columns_type = array(
         'INTEGER', 
+        'TEXT',
         'DATETIME', 
     );    
     
     $whereClause = "";
     
     $i = 0;
+
+    //Jointure
+    $whereClause = " WHERE id_boulette2=id_boulette"; 
+    $nbColumns = count($table_columns);
     foreach($table_columns as $col){
-        
+
         if ($i == 0) {
-           $whereClause = " WHERE";
+           $whereClause = $whereClause .  " AND ";
+            if($nbColumns>1){
+                $whereClause = $whereClause .  "(";
+            }
         }
         
         if ($i > 0) {
-            $whereClause =  $whereClause . " OR"; 
-        }
-        
+            $whereClause =  $whereClause . " OR "; 
+        }   
         $whereClause =  $whereClause . " " . $col . " LIKE '%". $searchValue ."%'";
-        
+
         $i = $i + 1;
+
+        if($nbColumns==$i){
+                $whereClause = $whereClause .  ")";
+        }
     }
-    
-    $rowTotal = $file_db->prepare("SELECT COUNT(*) as count FROM `boulette`" . $whereClause . $orderClause);
+    $jointure = ", (SELECT boulette.id_boulette as id_boulette2, group_concat(message,'//') as phrases FROM boulette, phrase WHERE boulette.id_boulette = phrase.id_boulette GROUP BY phrase.id_boulette) table1 ";
+    $rowTotal = $file_db->prepare("SELECT COUNT(*) as count FROM `boulette`". $jointure . $whereClause . $orderClause);
     $rowTotal->execute();
     $order_items = $rowTotal->fetchAll();
     $recordsTotal = $order_items[0]['count'];
 
-    $findSQL = $file_db->prepare("SELECT datetime(timestamp, 'unixepoch', 'localtime') as timestamp, boulette.id_boulette FROM `boulette`". $whereClause . $orderClause . " LIMIT ". $index . "," . $rowsPerPage);
+    $findSQL = $file_db->prepare("SELECT datetime(timestamp, 'unixepoch', 'localtime') as timestamp, phrases, id_boulette FROM `boulette`". $jointure . $whereClause . $orderClause . " LIMIT ". $index . "," . $rowsPerPage);
     $findSQL->execute();
     $rows_sql = $findSQL->fetchAll();
 
@@ -66,6 +77,7 @@
         for($i = 0; $i < count($table_columns); $i++){
 
         if( $table_columns_type[$i] != "blob") {
+                $row_sql["phrases"] = strlen($row_sql["phrases"]) > 150 ? substr($row_sql["phrases"],0,150)."..." : $row_sql["phrases"];
                 $rows[$row_key][$table_columns[$i]] = $row_sql[$table_columns[$i]];
         } else {                if( !$row_sql[$table_columns[$i]] ) {
                         $rows[$row_key][$table_columns[$i]] = "0 Kb.";

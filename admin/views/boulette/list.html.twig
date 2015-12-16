@@ -8,7 +8,7 @@
     <script type="text/javascript">
         $(function() {
             $("#boulette_list").dataTable({
-                order: [[ 1, "desc" ]],
+                order: [[ 2, "desc" ]],
 				serverSide: true,
 				ajax: '?page=boulette&action=json',
 				columns: [
@@ -22,7 +22,7 @@
 					}
 				],
 				rowCallback: function( row, data ) {
-					var actions = '<a href="?page=boulette&action=delete&id=' + data.{{primary_key}} + '" onclick="return confirm_delete();" class="btn btn-danger btn-xs">Delete</a>'; //<a href="?page=boulette&action=edit&id=' + data.{{primary_key}} + '" class="btn btn-primary btn-xs">Edit</a> 
+					var actions = '<a href="?page=boulette&action=edit&id=' + data.{{primary_key}} + '" class="btn btn-primary btn-xs">Edit</a> <a href="?page=boulette&action=delete&id=' + data.{{primary_key}} + '" onclick="return confirm_delete();" class="btn btn-danger btn-xs">Delete</a>'; 
 					$('td:eq({{ table_columns|length }})', row).html( actions );
 				}
 			});

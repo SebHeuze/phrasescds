@@ -10,7 +10,6 @@ $initial_data = array(
 $options = array();
 $findexternal_sql = 'SELECT `id_collaborateur`, `nom`, prenom FROM `collaborateur` ORDER BY prenom';
 $findexternal_query = $file_db->prepare($findexternal_sql, array());
-$findexternal_query = $file_db->prepare($findexternal_sql, array());
 $findexternal_query->execute();
 $findexternal_rows = $findexternal_query->fetchAll();
 
