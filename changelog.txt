@@ -9,6 +9,12 @@
 - Check avant suppression collaborateur
 - Edition de boulette
 
+====Version 1.0.2====
+- 
+
+
+
+
 ====TODO====
 - Catégorisation
 - Export Excel automatique (avec catégories)
