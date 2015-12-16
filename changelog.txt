@@ -2,14 +2,14 @@
 - Version initiale
 
 
-====Version 1.0.1====
+====Version 1.1.0====
 - Passage OneToMany (+Script SQL)
 - Suppression des phrases quand on supprime une boulette (+ nettoyage)
 - Ajout bouton menu pour Mobile
 - Check avant suppression collaborateur
 - Edition de boulette
 
-====Version 1.0.2====
+====Version 1.2.0====
 - 
 
 
@@ -23,3 +23,4 @@
 - Votes
 - Comptes ?
 - Commentaires ?
+- Nettoyage JS Admin lib inutiles (suite à l'ancien admin generator)

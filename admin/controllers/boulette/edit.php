@@ -10,7 +10,7 @@ $listcollabquery->execute();
 $listcollabrows = $listcollabquery->fetchAll();
 
 if(count($rows_sql)==0){   
-    $_SESSION['message'] = array("type"=>"danger", "message" => "Boulette non trouvé");
+    $_SESSION['message'] = array("type"=>"danger", "message" => "Boulette non trouvée");
 
     header('Location: ?page=boulette&action=list');   
 } else {
@@ -22,7 +22,7 @@ if(count($rows_sql)==0){
             $updateSQL->execute(array($_POST['phrase'.$i],$_POST['id_collaborateur'.$i],$_POST['id_phrase'.$i]));
             $i++;
         }
-        $_SESSION['message'] = array("type"=>"success", "message" => "Collaborateur modifié");
+        $_SESSION['message'] = array("type"=>"success", "message" => "Boulette modifiée");
 
         header('Location: ?page=boulette&action=list');   
         
