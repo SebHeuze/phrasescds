@@ -30,7 +30,15 @@
                             <div class="box-header">
                                 <h3 class="box-title"></h3>
                             </div><!-- /.box-header -->
-                                <input type="hidden" id="id_collaborateur" name="id_collaborateur" required="required" value="{{id}}" class="form-control" />
+                                <input type="hidden" id="id_boulette" name="id_boulette" required="required" value="{{id}}" class="form-control" />
+
+                                <div class='form-group'>
+                                    <select id="id_categorie{{ loop.index }}" name="id_categorie{{ loop.index }}" class="form-control" style="display:inline; width:30%">
+                                        {% for categorie in categories %}
+                                            <option {% if id_categorie==categorie.id_categorie %} selected {% endif %}value="{{categorie.id_categorie}}">{{categorie.nom}}</option>
+                                        {% endfor %}
+                                    </select>
+                                </div>
                                 {% for i in 0..phrases|length-1 %}
                                 <div class='form-group'>
                                     <select id="id_collaborateur{{ loop.index }}" name="id_collaborateur{{ loop.index }}" class="form-control" style="display:inline; width:30%">

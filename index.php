@@ -27,6 +27,7 @@ require_once(WW_CLASS.'BouletteManager.class.php');
 require_once(WW_CLASS.'Collaborateur.class.php');
 require_once(WW_CLASS.'Phrase.class.php');
 require_once(WW_CLASS.'Boulette.class.php');
+require_once(WW_CLASS.'Categorie.class.php');
 
 require_once(WW_CLASS.'RandomColor.class.php');
 require_once(WW_PLUGINS.'autoload.php');

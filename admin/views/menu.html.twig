@@ -20,7 +20,7 @@
             <li class="treeview {% if option is defined and (option == 'boulette_list' or option == 'boulette_create' or option == 'boulette_edit') %}active{% endif %}">
                 <a href="#">
                     <i class="fa fa-folder-o"></i>
-                    <span>Boulette</span>
+                    <span>Boulettes</span>
                     <i class="fa pull-right fa-angle-right"></i>
                 </a>
                 <ul class="treeview-menu" style="display: none;">
@@ -33,7 +33,7 @@
             <li class="treeview {% if option is defined and (option == 'collaborateur_list' or option == 'collaborateur_create' or option == 'collaborateur_edit') %}active{% endif %}">
                 <a href="#">
                     <i class="fa fa-folder-o"></i>
-                    <span>Collaborateur</span>
+                    <span>Collaborateurs</span>
                     <i class="fa pull-right fa-angle-right"></i>
                 </a>
                 <ul class="treeview-menu" style="display: none;">
@@ -42,6 +42,17 @@
                 </ul>
             </li>
 
+             <li class="treeview {% if option is defined and (option == 'categorie_list' or option == 'categorie_create' or option == 'categorie_edit') %}active{% endif %}">
+                <a href="#">
+                    <i class="fa fa-folder-o"></i>
+                    <span>Catégories</span>
+                    <i class="fa pull-right fa-angle-right"></i>
+                </a>
+                <ul class="treeview-menu" style="display: none;">
+                    <li {% if option is defined and option == 'categorie_list' %}class="active"{% endif %}><a href="?page=categorie&action=list" style="margin-left: 10px;"><i class="fa fa-angle-double-right"></i> Liste</a></li>
+                    <li {% if option is defined and option == 'categorie_create' %}class="active"{% endif %}><a href="?page=categorie&action=create" style="margin-left: 10px;"><i class="fa fa-angle-double-right"></i> Ajout</a></li>
+                </ul>
+            </li>
 
         </ul>
     </section>

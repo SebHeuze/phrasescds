@@ -7,10 +7,10 @@
     <!-- page script -->
     <script type="text/javascript">
         $(function() {
-            $("#collaborateur_list").dataTable({
+            $("#categorie_list").dataTable({
                 serverSide: true,
-                order: [[ 2, "asc" ]],
-                ajax: '?page=collaborateur&action=json',
+                order: [[ 1, "asc" ]],
+                ajax: '?page=categorie&action=json',
                 columns: [
                     {% for table_column in table_columns %}
                     { "data": "{{ table_column }}"},
@@ -22,14 +22,14 @@
                     }
                 ],
                 rowCallback: function( row, data ) {
-                    var actions = '<a href="?page=collaborateur&action=edit&id=' + data.{{primary_key}} + '" class="btn btn-primary btn-xs">Edit</a> <a href="?page=collaborateur&action=delete&id=' + data.{{primary_key}} + '" onclick="return confirm_delete();" class="btn btn-danger btn-xs">Delete</a>'; 
+                    var actions = '<a href="?page=categorie&action=edit&id=' + data.{{primary_key}} + '" class="btn btn-primary btn-xs">Edit</a> <a href="?page=categorie&action=delete&id=' + data.{{primary_key}} + '" onclick="return confirm_delete();" class="btn btn-danger btn-xs">Delete</a>'; 
                     $('td:eq({{ table_columns|length }})', row).html( actions );
                 }
             });
         });
 
         function confirm_delete(){
-            if(!confirm("Etes vous sûrs de vouloir supprimer ce collaborateur ?")) { 
+            if(!confirm("Etes vous sûrs de vouloir supprimer cette categorie ?")) { 
                 return false;
             }
         }
@@ -41,14 +41,14 @@
 
     <div class="wrapper row-offcanvas row-offcanvas-left">
 
-        {% include 'menu.html.twig' with {'option': 'collaborateur_list'} %}
+        {% include 'menu.html.twig' with {'option': 'categorie_list'} %}
 
         <!-- Right side column. Contains the navbar and content of the page -->
         <aside class="right-side">                
             <!-- Content Header (Page header) -->
             <section class="content-header">
                 <h1>
-                    Liste Collaborateurs
+                    Liste Categories
                 </h1>
             </section>
 
@@ -66,8 +66,8 @@
                             </div><!-- /.box-header -->
 
                             <div class="box-body table-responsive">
-                                <a class="btn btn-primary" href="?page=collaborateur&action=create">Creer collaborateur</a><br /><br />
-                                <table id="collaborateur_list" class="table table-bordered table-striped">
+                                <a class="btn btn-primary" href="?page=categorie&action=create">Creer categorie</a><br /><br />
+                                <table id="categorie_list" class="table table-bordered table-striped">
                                     <thead>
                                         <tr>
                                             {% for table_column in table_columns %}

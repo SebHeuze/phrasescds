@@ -7,10 +7,8 @@ if(!defined('INDEX_LOCK') || @INDEX_LOCK != 'ok')
 }
 
 
-class Boulette {
+class Categorie {
 
-    public $id_boulette;
-    public $categorie;
-    public $timestamp;
-    public $phrases;
+    public $id_categorie;
+    public $nom;
 }

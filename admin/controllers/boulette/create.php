@@ -11,16 +11,23 @@ $options = array();
 $findexternal_sql = 'SELECT `id_collaborateur`, `nom`, prenom FROM `collaborateur` ORDER BY prenom';
 $findexternal_query = $file_db->prepare($findexternal_sql, array());
 $findexternal_query->execute();
-$findexternal_rows = $findexternal_query->fetchAll();
+$collaborateurs = $findexternal_query->fetchAll();
 
-foreach($findexternal_rows as $findexternal_row){
-    $options[$findexternal_row['id_collaborateur']] = $findexternal_row['prenom'].' '.$findexternal_row['nom'];
+
+$options = array();
+$findexternal_sql = 'SELECT `id_categorie`, `nom` FROM `categorie` ORDER BY nom';
+$findexternal_query = $file_db->prepare($findexternal_sql, array());
+$findexternal_query->execute();
+$categories = $findexternal_query->fetchAll();
+
+foreach($collaborateurs as $collaborateur){
+    $options[$collaborateur['id_collaborateur']] = $collaborateur['prenom'].' '.$collaborateur['nom'];
 }
 
 if(isset($_POST['phrase1'])){
-    $update_query = "INSERT INTO `boulette` (`timestamp`) VALUES (?)";          
+    $update_query = "INSERT INTO `boulette` (`timestamp`,id_categorie) VALUES (?,?)";          
     $qry = $file_db->prepare($update_query);
-	$qry->execute(array(time()));
+	$qry->execute(array(time(),$_POST['id_categorie']));
 
     $id_boulette = $file_db->lastInsertId();
 
@@ -38,6 +45,7 @@ if(isset($_POST['phrase1'])){
 }
 
 echo $twig->render('boulette/create.html.twig', array(
-	"collaborateurs" => $findexternal_rows,
+	"collaborateurs" => $collaborateurs,
+    "categories" => $categories,
 	"nb_phrases"=>MAX_PHRASES_DIALOGUE
 ));
