@@ -4,14 +4,14 @@
 
     <div class="wrapper row-offcanvas row-offcanvas-left">
 
-        {% include 'menu.html.twig' with {'option': 'collaborateur_create'} %}
+        {% include 'menu.html.twig' %}
 
         <!-- Right side column. Contains the navbar and content of the page -->
         <aside class="right-side">                
             <!-- Content Header (Page header) -->
             <section class="content-header">
                 <h1>
-                    Ajouter un Collaborateur
+                    Exporter les boulettes
                 </h1>
             </section>
 
@@ -31,13 +31,8 @@
                                         </div><!-- /.box-header -->
 
                                             <div class='form-group'>
-                                                        <label for="prenom" class="required">Prenom</label>
-                                                        <input type="text" id="prenom" name="prenom" required="required" class="form-control" />
-                                            </div>
-
-                                            <div class='form-group'>
-                                                        <label for="nom" class="required">Nom</label>
-                                                        <input type="text" id="nom" name="nom" required="required" class="form-control" />
+                                                        <label for="nom" class="required">Inclure les phrases archivées</label>
+                                                        <input type="checkbox" id="nom" name="nom" required="required" class="form-control" />
                                             </div>
                                          
                                     </div><!-- /.box-body -->

@@ -53,6 +53,11 @@
                     <li {% if option is defined and option == 'categorie_create' %}class="active"{% endif %}><a href="?page=categorie&action=create" style="margin-left: 10px;"><i class="fa fa-angle-double-right"></i> Ajout</a></li>
                 </ul>
             </li>
+            <li {% if option is defined and option == 'export' %}class="active"{% endif %}>
+                <a href="?page=export&action=export">
+                    <i class="fa fa-file-excel-o"></i> <span>Exporter Boulettes</span>
+                </a>
+            </li>
         </ul>
     </section>
     <!-- /.sidebar -->

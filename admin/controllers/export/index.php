@@ -6,6 +6,6 @@ switch($_GET['action']){
         require "export.php";
     break;
     default:
-        require "index.php";
+        require "settings.php";
     break;
 }
