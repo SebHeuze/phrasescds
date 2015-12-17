@@ -22,6 +22,7 @@ class Constantes
 	public static function config()
 	{
 		define('MAX_PHRASES_DIALOGUE', 5);
+		define('START_INDEX_PHRASES_XSLS', 9);
 	}
         
         

@@ -11,12 +11,11 @@
 
 ====Version 1.2.0====
 - Catégorisation
-
+- Export Excel automatique (avec catégories)
 
 
 
 ====TODO====
-- Export Excel automatique (avec catégories)
 - Pagination première page (ou infinite scroll)
 - Archivage
 - Votes
