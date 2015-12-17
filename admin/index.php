@@ -50,6 +50,9 @@ switch($_GET['page']){
 	case "categorie":
 		require_once __DIR__.'/controllers/categorie/index.php';
 	break;
+	case "export":
+		require_once __DIR__.'/controllers/export/index.php';
+	break;
 	default:
 		echo $twig->render('dashboard.html.twig', array());
 	break;
