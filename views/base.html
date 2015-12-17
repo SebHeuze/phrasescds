@@ -28,5 +28,17 @@
   <script src="js/jquery.min.js"></script>
 
 	<script async defer id="github-bjs" src="https://buttons.github.io/buttons.js"></script>
+  <script src="js/jquery-ias.min.js"></script>
+
+  <script>
+    var ias = jQuery.ias({
+      container:  '#main',
+      item:       '.post',
+      pagination: '#pagination',
+      next:       '.next'
+    });
+    // Add a loader image which is displayed during loading
+    ias.extension(new IASSpinnerExtension());
+  </script>
 </body>
 </html>

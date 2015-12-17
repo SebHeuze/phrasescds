@@ -23,6 +23,7 @@ class Constantes
 	{
 		define('MAX_PHRASES_DIALOGUE', 5);
 		define('START_INDEX_PHRASES_XSLS', 9);
+		define('NB_BOULETTES_PAGE', 5);
 	}
         
         

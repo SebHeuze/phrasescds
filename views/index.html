@@ -4,7 +4,7 @@
 		{% for boulette in boulettes %}
 			{% if boulette.timestamp!=0 %}
 			{% if boulette.phrases|length == 1 %}
-	        	<div class="chouquette">
+	        	<div class="post chouquette">
 					<div class="phrase">{{boulette.phrases.0.message}}</div>
 					<div class="auteur">
 						<span class="icon" style="background-color: {{boulette.phrases.0.collaborateur.couleur}}">{{boulette.phrases.0.collaborateur.prenom[:1]}}</span>
@@ -13,7 +13,7 @@
 					<div class="date">Dans {{boulette.categorie.nom}} le {{boulette.timestamp|date("d/m/Y")}}</div>
 				</div>
 			{% else %}
-				<div class="multichouquette">
+				<div class="post multichouquette">
 					<div class="dialogue">
 						{% for phrase in boulette.phrases %}
 							<div class="ligne">
@@ -28,7 +28,11 @@
 					 <div class="date">Dans {{boulette.categorie.nom}} le {{boulette.timestamp|date("d/m/Y")}}</div>
 				</div>
 			{% endif %}
-
+	
     	{% endif %}
     	{% endfor %}
+
+    	<div id="pagination">
+		    <a href="?page={{page+1}}" class="next">next</a>
+		</div>
 {% endblock %}

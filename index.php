@@ -32,6 +32,8 @@ require_once(WW_CLASS.'Categorie.class.php');
 require_once(WW_CLASS.'RandomColor.class.php');
 require_once(WW_PLUGINS.'autoload.php');
 
+Constantes::config();
+
 //Connection a la base de donnée
 Constantes::bdd();
 SQLite::connect();
@@ -42,6 +44,11 @@ $twig = new Twig_Environment($loader, array(
   //'cache' => 'cache',
 ));
 
-$boulettes = BouletteManager::getBoulettes();
-echo $twig->render('index.html', array('name' => 'Boulettes Chouquettes', 'boulettes' => $boulettes));
+if(isset($_GET['page']) && intval($_GET['page'])>1){
+	$page = intval($_GET['page']);
+} else {
+	$page = 1;
+}
+$boulettes = BouletteManager::getBoulettes($page);
+echo $twig->render('index.html', array('name' => 'Boulettes Chouquettes', 'boulettes' => $boulettes, 'page' => $page));
 ?>
