@@ -9,9 +9,7 @@ $findSQL->execute();
 $categories = $findSQL->fetchAll();
 
 foreach($categories as $categorie){
-	$resultSheet = clone  $objPHPExcel->getActiveSheet(); 
-	$resultSheet->setTitle($categorie['nom']);
-	$resultSheet->setCellValue('A1', $categorie['nom']);
+	
 
 	$phrasesSQL = $file_db->prepare("SELECT boulette.*, phrase.* FROM phrase, boulette WHERE boulette.id_boulette = phrase.id_boulette AND id_categorie = ? ORDER BY boulette.timestamp");
 	$phrasesSQL->execute(array($categorie['id_categorie']));
@@ -23,12 +21,19 @@ foreach($categories as $categorie){
 		}
 		$boulettes[$phrase['id_boulette']][] = $phrase['message'];
 	}
-	$sheetIndex = START_INDEX_PHRASES_XSLS;
-	foreach($boulettes as $boulette){
-		$resultSheet->setCellValue('A'.$sheetIndex, implode("\n",$boulette));
-		$sheetIndex++;
+	if(count($boulettes)>0){
+		$resultSheet = clone  $objPHPExcel->getActiveSheet(); 
+		$resultSheet->setTitle($categorie['nom']);
+		$resultSheet->setCellValue('A1', $categorie['nom']);
+		$sheetIndex = START_INDEX_PHRASES_XSLS;
+		foreach($boulettes as $boulette){
+			$resultSheet->setCellValue('A'.$sheetIndex, implode("\n",$boulette));
+			$sheetIndex++;
+		}
+		$objPHPExcel->getActiveSheet()->getParent()->addSheet($resultSheet,1);
 	}
-	$objPHPExcel->getActiveSheet()->getParent()->addSheet($resultSheet,1);
+	
+	
 }
 
 
