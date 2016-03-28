@@ -11,7 +11,7 @@ $categories = $findSQL->fetchAll();
 foreach($categories as $categorie){
 	
 
-	$phrasesSQL = $file_db->prepare("SELECT boulette.*, phrase.* FROM phrase, boulette WHERE boulette.id_boulette = phrase.id_boulette AND id_categorie = ? ORDER BY boulette.timestamp");
+	$phrasesSQL = $file_db->prepare("SELECT boulette.*, phrase.* FROM phrase, boulette WHERE boulette.archive <> 1 AND boulette.id_boulette = phrase.id_boulette AND id_categorie = ? ORDER BY boulette.timestamp");
 	$phrasesSQL->execute(array($categorie['id_categorie']));
 	$phrases = $phrasesSQL->fetchAll();
 	$boulettes = array();
