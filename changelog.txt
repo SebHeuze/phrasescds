@@ -17,10 +17,12 @@
 ====Version 1.3.0====
 - KONAMI !
 
+====Version 1.4.0====
+- Archivage (manuel)
 
 
 ====TODO====
-- Archivage
+- Archivage auto
 - Votes
 - Comptes ?
 - Commentaires ?
