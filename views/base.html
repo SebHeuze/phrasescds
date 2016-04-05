@@ -14,9 +14,13 @@
   <header>
 
   </header>
-  <div id="main">
+
+  <h1 id="h1konami" style="display:none">BOULETTES CHOUQUETTES<sub>CDS Transporteur</sub></h1>
+  <div id="main" class="stars">
+  <div id="maincontent">
 		{% block content %}
 		{% endblock %}
+  </div>
   </div>
   <footer>
 	<center>
@@ -28,5 +32,49 @@
   <script src="js/jquery.min.js"></script>
 
 	<script async defer id="github-bjs" src="https://buttons.github.io/buttons.js"></script>
+  <script src="js/jquery-ias.min.js"></script>
+
+  <script>
+    var ias = jQuery.ias({
+      container:  '#main',
+      item:       '.post',
+      pagination: '#pagination',
+      next:       '.next'
+    });
+    // Add a loader image which is displayed during loading
+    ias.extension(new IASSpinnerExtension());
+
+    //Haut, haut, bas, bas, gauche, droite, gauche, droite, B, A
+    var k = [38, 38, 40, 40, 37, 39, 37, 39, 66, 65],
+    n = 0;
+    $(document).keydown(function (e) {
+        if (e.keyCode === k[n++]) {
+            if (n === k.length) {
+                $("#h1konami").show();
+                if (!document.getElementById(cssId))
+                {
+                    var head  = document.getElementsByTagName('head')[0];
+                    var link  = document.createElement('link');
+                    link.id   = cssId;
+                    link.rel  = 'stylesheet';
+                    link.type = 'text/css';
+                    link.href = 'css/style-starwars.css';
+                    link.media = 'all';
+                    head.appendChild(link);
+                }
+
+                var audio = new Audio('audio/starwars.mp3');
+                audio.play();
+                n = 0;
+                return false;
+            }
+        }
+        else {
+            n = 0;
+        }
+    });
+    var cssId = 'starwars';  // you could encode the css path itself to generate id..
+  
+  </script>
 </body>
 </html>

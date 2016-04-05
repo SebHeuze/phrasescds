@@ -1,0 +1,56 @@
+{% extends 'base/backend.html.twig' %}
+
+{% block container %}
+
+    <div class="wrapper row-offcanvas row-offcanvas-left">
+
+        {% include 'menu.html.twig' with {'option': 'categorie_create'} %}
+
+        <!-- Right side column. Contains the navbar and content of the page -->
+        <aside class="right-side">                
+            <!-- Content Header (Page header) -->
+            <section class="content-header">
+                <h1>
+                    Ajouter un Collaborateur
+                </h1>
+            </section>
+
+            <!-- Main content -->
+            <section class="content">
+
+                {% include 'alerts.html.twig' %}
+
+                <div class="row">
+                    <div class="col-md-6">
+                                <form name="form" method="post" action="">
+                        
+
+                                    <div class="box box-info">
+                                        <div class="box-header">
+                                            <h3 class="box-title"></h3>
+                                        </div><!-- /.box-header -->
+
+                                            <div class='form-group'>
+                                                        <label for="nom" class="required">Nom</label>
+                                                        <input type="text" id="nom" name="nom" required="required" class="form-control" />
+                                            </div>
+                                         
+                                    </div><!-- /.box-body -->
+
+
+                                <div class="box-footer">
+                                    <button type="submit" class="btn btn-primary">Creer</button>
+                                </div>
+                                 </form>   
+
+                            </div><!-- /.box -->
+
+
+                    </div>
+                </div>
+
+            </section><!-- /.content -->
+        </aside><!-- /.right-side -->
+    </div><!-- ./wrapper -->
+
+{% endblock %}

@@ -11,6 +11,9 @@ switch($_GET['action']){
     case "delete":
         require "delete.php";
     break;
+    case "edit":
+        require "edit.php";
+    break;
     case "list":
     default:
         require "list.php";

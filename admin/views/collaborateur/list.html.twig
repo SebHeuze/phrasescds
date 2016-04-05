@@ -7,8 +7,9 @@
     <!-- page script -->
     <script type="text/javascript">
         $(function() {
-            $("#boulette_list").dataTable({
+            $("#collaborateur_list").dataTable({
                 serverSide: true,
+                order: [[ 2, "asc" ]],
                 ajax: '?page=collaborateur&action=json',
                 columns: [
                     {% for table_column in table_columns %}
@@ -66,7 +67,7 @@
 
                             <div class="box-body table-responsive">
                                 <a class="btn btn-primary" href="?page=collaborateur&action=create">Creer collaborateur</a><br /><br />
-                                <table id="boulette_list" class="table table-bordered table-striped">
+                                <table id="collaborateur_list" class="table table-bordered table-striped">
                                     <thead>
                                         <tr>
                                             {% for table_column in table_columns %}

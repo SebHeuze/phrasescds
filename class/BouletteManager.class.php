@@ -8,12 +8,14 @@ if(!defined('INDEX_LOCK') || @INDEX_LOCK != 'ok')
 
 class BouletteManager {
 
-    public static function getBoulettes(){
+    public static function getBoulettes($page){
         global $file_db;
 
-        $result = $file_db->query('SELECT * FROM boulette b, boulette_phrase bp, phrase p, collaborateur c'
-           . ' WHERE b.id_boulette=bp.id_boulette AND bp.id_phrase=p.id_phrase AND p.id_collaborateur = c.id_collaborateur ORDER BY b.timestamp DESC');
-     
+        $getBoulettesQuery = $file_db->prepare('SELECT cat.id_categorie as id_categorie, cat.nom as nom_categorie, b.*, p.*, c.* FROM boulette b, phrase p, collaborateur c, categorie cat'
+       . ' WHERE b.id_boulette=p.id_boulette AND cat.id_categorie = b.id_categorie AND b.archive<>1 AND p.id_collaborateur = c.id_collaborateur ORDER BY b.timestamp DESC');
+        $getBoulettesQuery->execute();
+        $result = $getBoulettesQuery->fetchAll();
+
         $boulette = new Boulette;
         foreach($result as $row) {
             if ($boulette->id_boulette != $row['id_boulette']){
@@ -23,6 +25,10 @@ class BouletteManager {
                 $boulette = new Boulette;
                 $boulette->id_boulette = $row['id_boulette'];
                 $boulette->timestamp = $row['timestamp'];
+                $categorie = new Categorie;
+                $categorie->id_categorie = $row['id_categorie'];
+                $categorie->nom = $row['nom_categorie'];
+                $boulette->categorie = $categorie;
             }
 
             $collaborateur = new Collaborateur;
@@ -39,8 +45,7 @@ class BouletteManager {
         }
         $boulettes[] = $boulette;
 
-
-        return $boulettes;
+        return array_slice($boulettes, ($page-1)*NB_BOULETTES_PAGE, NB_BOULETTES_PAGE);
     }
 
 }

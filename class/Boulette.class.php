@@ -10,6 +10,7 @@ if(!defined('INDEX_LOCK') || @INDEX_LOCK != 'ok')
 class Boulette {
 
     public $id_boulette;
+    public $categorie;
     public $timestamp;
     public $phrases;
 }

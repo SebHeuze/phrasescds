@@ -21,7 +21,9 @@ class Constantes
 
 	public static function config()
 	{
-		define('MAX_PHRASES_DIALOGUE', 4);
+		define('MAX_PHRASES_DIALOGUE', 5);
+		define('START_INDEX_PHRASES_XSLS', 9);
+		define('NB_BOULETTES_PAGE', 5);
 	}
         
         

@@ -1,4 +1,4 @@
-{% extends 'ag_base/backend.html.twig' %}
+{% extends 'base/backend.html.twig' %}
 
 {% block container %}
 
@@ -11,44 +11,54 @@
             <!-- Content Header (Page header) -->
             <section class="content-header">
                 <h1>
-                    Edit Boulette {{ id }}
+                    Editer Boulette {{ id }}
                 </h1>
             </section>
 
             <!-- Main content -->
             <section class="content">
 
-                {% include 'ag_alerts.html.twig' %}
+                {% include 'alerts.html.twig' %}
 
                 <div class="row">
                     <div class="col-md-6">
 
-                        {{ form_start(form, {'method': 'POST'}) }}
-                            {{ form_errors(form) }}
+                        <form name="form" method="post" action="">
+                        
 
-                            <div class="box box-info">
-                                <div class="box-header">
-                                    <h3 class="box-title"></h3>
-                                </div><!-- /.box-header -->
-                                <div class="box-body">
+                        <div class="box box-info">
+                            <div class="box-header">
+                                <h3 class="box-title"></h3>
+                            </div><!-- /.box-header -->
+                                <input type="hidden" id="id_boulette" name="id_boulette" required="required" value="{{id}}" class="form-control" />
 
-									<div class='form-group'>
-									    {{ form_label(form.timestamp) }}
-									    {{ form_widget(form.timestamp, { attr: { 'class': 'form-control' }}) }}
-									</div>
-
-                                                 
-
-                                </div><!-- /.box-body -->
-
-                                {{ form_rest(form) }}
-
-                                <div class="box-footer">
-                                    <button type="submit" class="btn btn-primary">Edit</button>
+                                <div class='form-group'>
+                                    <select id="id_categorie{{ loop.index }}" name="id_categorie{{ loop.index }}" class="form-control" style="display:inline; width:30%">
+                                        {% for categorie in categories %}
+                                            <option {% if id_categorie==categorie.id_categorie %} selected {% endif %}value="{{categorie.id_categorie}}">{{categorie.nom}}</option>
+                                        {% endfor %}
+                                    </select>
                                 </div>
+                                {% for i in 0..phrases|length-1 %}
+                                <div class='form-group'>
+                                    <select id="id_collaborateur{{ loop.index }}" name="id_collaborateur{{ loop.index }}" class="form-control" style="display:inline; width:30%">
+                                        {% if loop.index!=1 %}<option value=""></option>{% endif %}
+                                        {% for collab in collaborateurs %}
+                                            <option {% if phrases[i]['id_collaborateur']==collab.id_collaborateur %} selected {% endif %}value="{{collab.id_collaborateur}}">{{collab.prenom}} {{collab.nom}}</option>
+                                        {% endfor %}
+                                    </select>
+                                    <input type="hidden" id="id_phrase{{ loop.index }}" value="{{phrases[i]['id_phrase']}}" name="id_phrase{{ loop.index }}" />
+                                    <input type="text" id="phrase{{ loop.index }}" value="{{phrases[i]['message']}}" name="phrase{{ loop.index }}" "{% if loop.index==1 %}required=required{% endif %}" class="form-control" style="display:inline; width:69%" />
+                                </div>
+                                {% endfor %}
+                             
+                        </div><!-- /.box-body -->
 
-                            </div><!-- /.box -->
-                        {{ form_end(form) }}
+
+                    <div class="box-footer">
+                        <button type="submit" class="btn btn-primary">Editer</button>
+                    </div>
+                     </form>   
 
 
                     </div>
