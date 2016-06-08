@@ -10,6 +10,9 @@ Site pour les boulettes chouquettes du CDS
 composer install
 ```
 
+# Télechargements 
+https://github.com/SebHeuze/phrasescds/releases
+
 # Historique des versions
 
 ====Version 1.0.0====
