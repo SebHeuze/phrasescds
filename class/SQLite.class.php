@@ -33,11 +33,12 @@ class SQLite
 		* Creer tables                        *
 		**************************************/
 
-			// Table des boulettes
+		// Table des boulettes
 		$file_db->exec("CREATE TABLE IF NOT EXISTS boulette (
 		                id_boulette INTEGER PRIMARY KEY AUTOINCREMENT, 
 		                id_categorie INTEGER,
-		                timestamp  DATETIME DEFAULT (strftime('%s', 'now')))");
+		                timestamp  DATETIME DEFAULT (strftime('%s', 'now')),
+                        archive INTEGER DEFAULT 0)");
 
 		// Table des phrases
 		$file_db->exec("CREATE TABLE IF NOT EXISTS phrase (

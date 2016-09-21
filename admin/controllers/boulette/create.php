@@ -25,9 +25,9 @@ foreach($collaborateurs as $collaborateur){
 }
 
 if(isset($_POST['phrase1'])){
-    $update_query = "INSERT INTO `boulette` (`timestamp`,id_categorie) VALUES (?,?)";          
+    $update_query = "INSERT INTO `boulette` (`timestamp`,id_categorie, archive) VALUES (?,?, ?)";          
     $qry = $file_db->prepare($update_query);
-	$qry->execute(array(time(),$_POST['id_categorie']));
+	$qry->execute(array(time(),$_POST['id_categorie'],0));
 
     $id_boulette = $file_db->lastInsertId();
 
