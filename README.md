@@ -3,7 +3,9 @@ Site pour les boulettes chouquettes du CDS
 
 # Requis
 - Composer : https://getcomposer.org/doc/00-intro.md
-- Extension PDO SQlite PHP
+- Extension PDO SQlite (php5-sqlite)
+- Extension ZipArchive (php5-zip) pour l'export de boulette/chouquette 
+
 
 # Installation  des dépendances
 ```
