@@ -8,7 +8,6 @@ if(!defined('INDEX_LOCK') || @INDEX_LOCK != 'ok')
 
 
 class Collaborateur {
-
     public $id_collaborateur;
     public $prenom;
     public $nom;
