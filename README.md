@@ -38,3 +38,6 @@ https://github.com/SebHeuze/phrasescds/releases
 
 ====Version 1.4.0====
 - Archivage (manuel)
+
+====Version 1.5.0====
+- API Rest (prototype, j'ai pas fait de php depuis des années)
